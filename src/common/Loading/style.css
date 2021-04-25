@@ -1,0 +1,6 @@
+
+.conatinerLoading {
+    display: flex;
+    justify-content: center;
+    height: 14rem;
+}

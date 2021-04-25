@@ -1,0 +1,190 @@
+.containerLogin {
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+.containerLogin .TitleLogin{
+    margin: 1rem 0;
+
+}
+.containerLogin .TitleLogin span{
+    font-size: 2rem;
+}
+.containerLogin form{
+    width: 40%;
+}
+.containerLogin form input{
+    width: 100%;
+    padding: 10px 10px;
+    
+    border: 1px solid #aba7a7!important
+
+}
+.containerLogin form input:focus{
+  outline: none;
+
+}
+.containerLogin .containerBtnLogin{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin: 2rem 0;
+}
+.containerLogin .containerBtnLogin .btn{
+    width: 50%;
+    border: 1px solid #aba7a7!important
+}
+.containerLogin button.btn {
+
+    border: 1px solid #fff;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    padding: 10px 0;
+    color: #fff;
+    outline: none;
+    width: 50%;
+    z-index: 9;
+    font-size: .8em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: #570f17;
+}
+.containerLogin button.btn:hover {
+    color: #000;
+}
+.containerLogin button.btn::before {
+    content: "";
+    position: absolute;
+    background: #fff;
+    height: 0;
+    z-index: -1;
+    transition: 0.5s;
+    width: 100%;
+    left: 0;
+    border: none; 
+}
+.containerLogin button.btn_::before {
+    bottom: 0; 
+}
+.containerLogin button.btn_:hover::before {
+    height: 100%;
+}
+.containerLogin button.btn:focus{
+    outline: none;
+    box-shadow: inherit;
+}
+.containerLogin .form-group {
+    margin-bottom: 2rem;
+}
+.containerRegister {
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+.containerRegister .TitleRegister{
+    margin: 1rem 0;
+
+}
+.containerRegister .TitleRegister span{
+    font-size: 2rem;
+}
+.containerRegister form{
+    width: 40%;
+}
+.containerRegister form input{
+    width: 100%;
+    padding: 10px 10px;
+    
+    border: 1px solid #aba7a7!important
+
+}
+.containerRegister form input:focus{
+  outline: none;
+
+}
+.containerRegister .containerBtnLogin{
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin: 2rem 0;
+}
+.containerRegister .containerBtnLogin .btn{
+    width: 50%;
+    border: 1px solid #aba7a7!important
+}
+.containerRegister button.btn {
+
+    border: 1px solid #fff;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    padding: 10px 0;
+    color: #fff;
+    outline: none;
+    width: 50%;
+    z-index: 9;
+    font-size: .8em;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: #570f17;
+}
+.containerRegister button.btn:hover {
+    color: #000;
+}
+.containerRegister button.btn::before {
+    content: "";
+    position: absolute;
+    background: #fff;
+    height: 0;
+    z-index: -1;
+    transition: 0.5s;
+    width: 100%;
+    left: 0;
+    border: none; 
+}
+.containerRegister button.btn_::before {
+    bottom: 0; 
+}
+.containerRegister button.btn_:hover::before {
+    height: 100%;
+}
+.containerRegister button.btn:focus{
+    outline: none;
+    box-shadow: inherit;
+}
+.containerRegister .form-group {
+    margin-bottom: 1rem;
+}
+.containerRegister label {
+    color: #000;
+    font-weight: 500;
+}
+.containerRegister form select{
+    width: 100%;
+    padding: 10px 10px;
+    
+    border: 1px solid #aba7a7!important
+
+}
+.containerRegister form select{
+    width: 100%!important;
+    padding: 10px 10px;
+    
+    border: 1px solid #aba7a7!important
+
+}
+.containerRegister form select:focus{
+    outline: none;
+  
+  }

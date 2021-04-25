@@ -1,0 +1,60 @@
+.containerFeatures{
+    background: #fff;
+}
+.containerFeatures .card-title{
+    margin: 10px 0;
+}
+.containerFeatures .containerTitleMenu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.containerFeatures .title-wrap-home::after {
+    content: "\203A";
+    padding: .9%;
+    margin-left: 10px;
+}
+.containerFeatures .title-wrap-home{
+    margin-right: 10px;
+}
+.containerFeatures  a {
+    color: #000;
+    text-decoration: none;
+}
+.containerFeatures .containerTitleMenu  a:hover {
+    color: #570f17;
+    text-decoration: none;
+}
+.containerFeatures div > div.card-foot > div > a:hover{
+    color: #fff!important;
+    text-decoration: none;
+    background-color: rgb(126, 33, 33);
+    transition: .7s;
+}
+.btn.focus, .btn:focus{
+    box-shadow:inherit!important
+}
+.containerFeatures  .ContainerItemFeatures{
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+}
+.containerFeatures div > div.card-foot > div > a::after{
+    content: "\203A";
+    padding: .9%;
+    margin-left: 10px;
+}
+
+.containerFeatures .card-footer.text-center a{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.containerFeatures .card-footer.text-center{
+    cursor: pointer;
+    display: flex;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+}
+.containerLoading{
+
+}

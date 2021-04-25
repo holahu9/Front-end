@@ -1,0 +1,28 @@
+#navbarSupportedContent > ul > li > a{
+    padding: 0!important;
+    margin-top: 0.5rem;
+}
+.containerAnimated .typed-text span {
+    font-size: 2rem;
+    color: #ffffff;
+
+
+}
+
+nav.navbar.navbar-expand-lg.fixed-top .cool-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width .3s;
+}
+nav.navbar.navbar-expand-lg.fixed-top .nav-link:hover ::after {
+    width: 100%;
+}
+nav.navbar.navbar-expand-lg.fixed-top .nav-link:active ::after {
+    width: 100%;
+}
+nav.navbar.navbar-expand-lg.fixed-top .nav-link:focus ::after {
+    width: 100%;
+}

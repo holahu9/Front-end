@@ -1,0 +1,388 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orelega+One&family=Prata&display=swap');
+
+/******  FONTS *******/ 
+body{
+  /* font-family: 'Tangerine', serif; */
+  background: #fff;
+}
+
+/* ********** NAVBAR **********/
+
+nav{
+    z-index: 2;
+
+    
+}
+.container{
+    flex-direction: column;
+}
+
+.navbar{
+    background-color:#570f17;
+    height: 10vh;
+  
+}
+
+.navbar-title{
+  font-size: 4rem;
+  color:white!important;
+}
+.typed-text span{
+  color: #ffffff;
+}
+.navbar-tagline{
+  font-family: 'Orelega One', cursive;
+  font-family: 'Prata', serif;
+  font-size: 1.6rem;
+  background-color: rosybrown;
+  color: maroon;
+  font-style: italic;
+
+  position: relative;
+  bottom: 0px;
+  margin-top: 5px;
+  border-radius: 15px;
+}
+
+
+.fixed-top {
+
+  z-index: 999999999!important;
+}
+.containerAnimated{
+  position: absolute;
+  color: aliceblue;
+  text-align: center;
+  font-family: 'Sacramento', cursive;
+  margin: 0px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 99999999;
+  opacity: 100%;
+}
+/* MENU */
+.containerChildAnimated {
+  flex-direction: column;
+  background: #570f17;
+  width: 40%;
+  height: 40%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0, 0.4);
+  display: flex;
+  border: 10px solid #fff;
+}
+nav a.nav-link{
+    padding: 5%;
+    font-weight: 100;
+    letter-spacing: 0.0375rem;
+    cursor: pointer;
+    color: white;
+    font-family: 'Orelega One', cursive;
+    font-family: 'Prata', serif;
+  }
+
+.collapse-navbar-collapse, .collapse{
+
+}
+
+.navbar-toggler{
+  
+}
+
+
+
+nav ul li {
+    text-transform: uppercase;
+   color:white;
+   padding: 0 1rem;
+   font-size: .9rem!important;
+  }
+
+  .navbar-brand {
+    /* max-width: 17.25rem; */
+    padding: 0 !important;
+
+  }
+
+
+
+  @media (max-width: 768px) {
+    .navbar-brand {
+      width: 7rem;
+    }
+  }
+
+ 
+
+
+
+
+
+
+/******* HEADER **************/
+
+   .header-wraper {
+    
+    background: url(assets/background2.jpg) no-repeat;
+    background-size: cover;
+    position: absolute;
+    opacity: 60%;
+    height: 90vh;
+    width: 100%;
+  }
+
+
+.main-info {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1;
+   
+  }
+  .containerBody{
+    position: relative;
+    height: 90vh;
+    margin-top: 10vh;
+    width: 100%;
+  }
+  
+.slideshow{
+  /*margin: 0 auto;*/
+  margin-top: 200px;
+  overflow: hidden;
+  width: 50rem;
+
+  display: block;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideshowSlider {
+  white-space: nowrap;
+  transition: ease 1000ms;
+}
+
+.slide {
+  display: inline-block;
+
+  width: 100%;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Buttons */
+
+.slideshowDots {
+  text-align: center;
+}
+
+.slideshowDot {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 15px 7px 0px;
+  background-color: rosybrown;
+}
+
+.slideshowDot.active {
+  background-color: maroon;
+}
+
+
+ 
+  /*a.btn-main-offer {
+    color: rgb(100, 5, 5);
+    background:white;
+    font-size: 2rem;
+    font-size: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 150px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    font-family: 'Orelega One', cursive;
+    font-family: 'Prata', serif;
+   }*/
+
+
+  
+  
+
+  /* ********************** Footer ************************ */
+
+.footer {
+   background: #570f17;
+    padding: 4rem;
+    color:white;
+    height:auto;
+  }
+  
+  .footer a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+  }
+  
+  .footer a:hover{
+    text-decoration: none;
+ 
+    cursor: pointer;
+  
+  }
+  
+  .footer p {
+    margin-bottom: 0;
+    font-size: 1rem;
+  }
+   /********************LOGIN****************/
+
+   /* .text-center{
+     background-color: rgb(236, 150, 45);
+     text-align: center;
+   } */
+  
+   .login1{
+    width:100%;
+     /* background: url(./assets/background3.jpg); */
+     background-size: cover;
+     fill-opacity: inherit;
+     text-align: center;
+     padding: 100px 200px;
+     margin-bottom: 0px;
+     background: white;
+   }
+
+   .footer .ml-3, .mx-3 {
+    margin-left: 0.5rem!important;
+    border-radius: 100px!important;
+}
+   /*******REGISTER*********/
+
+
+
+  .reg-text{
+    margin: 20px 50px;
+  }
+
+
+  hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+  }
+
+/* Set a style for all buttons */
+.button1 {
+  background-color: #e95c1b;
+  color: white;
+  padding: 10px 15px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  border-radius: 20px;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+
+
+.button1{
+
+  animation: animate 8s linear infinite;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, #03a9f4, #f441a4, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  /*border-radius: 40px;*/
+  z-index: 1; 
+ }
+  .button:hover {
+  animation: animate 8s linear infinite;
+ }
+ @keyframes animate {
+  0% {
+   background-position: 0%;
+  }
+  100% {
+   background-position: 400%;
+  }
+ }
+ .button:before {
+  content: '';
+  /*position: absolute;
+  top: -5px;
+  bottom: -5px;
+  right: -5px;
+  left: -5px;*/
+  z-index: -1;
+  background: linear-gradient(90deg, #03a9f4, #f441a4, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  border-radius: 40px;
+  filter: blur(20px);
+  opacity: 0;
+  transition: 0.5s;
+ }
+ .button:hover:before {
+  filter: blur(20px);
+  opacity: 1;
+  animation: animate 8s linear infinite;
+ }
+
+ .card-title{
+   color:black;
+   
+ }
+ /* section{
+  width: 100%;
+  height:100vh;
+  margin-top: 150px;
+  min-height: 600px;
+  background: #272629;
+  background-size: cover;
+  background-repeat: none;
+  color:white;
+ } */
+
+/**********  CARD ************/
+
+.card-footer a{
+  background: #5d5d5d;
+
+  border-radius: 5px;
+
+  color: white;
+  
+}
+
+.card-title{
+  margin-bottom:0px;
+}
+
+.mar{
+  margin: 5px;
+}
+
+
+
+
+
+  
