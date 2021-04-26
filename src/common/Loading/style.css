@@ -2,5 +2,9 @@
 .conatinerLoading {
     display: flex;
     justify-content: center;
+    height: 90vh;
+    align-items: center;
+}
+img.sizeImageLoad {
     height: 14rem;
 }

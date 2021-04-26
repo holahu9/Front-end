@@ -1,12 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 const Projects = (props) => {
-
     return (
-
-        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-3 " key={props.id}>
+        <div className="col-xs-12 col-sm-12 col-md-6 col-lg-3 containerItemFeatures">
             <div className="card h-100 ContainerItemFeatures">
-
                 <div className="card-body text-center cardBodyBorder">
                     <h4 className="card-title">{props.name}</h4>
                     <h7 className="card-title">{props.salon_name}</h7>

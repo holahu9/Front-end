@@ -22,7 +22,7 @@ const Feature = () => {
             setListProfile([])
         }
     }, [])
-    console.log(listProfile)
+
     return (
         <section className="containerFeatures">
             <div className="container-fluid containerColor">
@@ -46,6 +46,7 @@ const Feature = () => {
                                             _id={item._id}
                                             phone={item.phone}
                                             star_rate={item.star_rate}
+                                            key={item._id}
                                         />
                                     ))}
                                 </div>

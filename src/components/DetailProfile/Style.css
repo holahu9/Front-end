@@ -116,3 +116,33 @@ body{
     font-weight: 600;
     color: #0062cc;
   }
+.containerModalReviews textarea {
+  width: 100%;
+}
+.containerModalReviews textarea:focus,.containerModalReviews textarea:active  {
+  outline: none;
+}
+.conainerItemInforProfile .containerBtnReviews,
+.containerModalReviews .containerBtnReviews ,
+.modal-content .modal-footer{
+  display: flex;
+  justify-content: flex-end;
+}
+.conainerItemInforProfile .containerBtnReviews button ,
+ .containerModalReviews .containerBtnReviews button ,
+ .modal-content .modal-footer buton{
+  border: none;
+  font-family: cursive;
+  padding: 5px 25px;
+  background: #570f17;
+  border-radius: 5px;
+  color: #fff;
+}
+.conainerItemInforProfile .containerBtnReviews button:hover ,
+.containerModalReviews .containerBtnReviews button:hover,
+.modal-content .modal-footer buton:hover{
+  background: #9e0e0e!important;
+  transition: .7s;
+  cursor: pointer;
+
+}

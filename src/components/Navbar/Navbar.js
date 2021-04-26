@@ -9,7 +9,7 @@ import { AuthContext } from '../../context/AuthContext';
 import './style.css'
 export const Navbar = () => {
     const { userData, token, logout } = useContext(AuthContext);
-    console.log(userData)
+
     const handlerLogout = () => {
         logout()
         toast.success("Logout Success")
@@ -22,31 +22,31 @@ export const Navbar = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item active">
-                                <Link smooth={true} to="/" className="nav-link"> <span className="cool-link">Home</span></Link>
+                                <Link  to="/" className="nav-link"> <span className="cool-link">Home</span></Link>
                             </li>
                             {
                                 userData && userData?.role === 2 ?
                                     <li className="nav-item">
-                                        <Link smooth={true} to="/profile" className="nav-link">  <span className="cool-link">Profile</span></Link>
+                                        <Link  to="/profile" className="nav-link">  <span className="cool-link">Profile</span></Link>
                                     </li> : null
 
                             }
                             <li className="nav-item">
-                                <Link smooth={true} to="/feature" className="nav-link"> <span className="cool-link">Feature</span></Link>
+                                <Link  to="/feature" className="nav-link"> <span className="cool-link">Feature</span></Link>
                             </li>
 
                             <li className="nav-item">
-                                <Link smooth={true} to="/portfolio" className="nav-link"><span className="cool-link">About Us</span></Link>
+                                <Link  to="/portfolio" className="nav-link"><span className="cool-link">About Us</span></Link>
                             </li>
 
                             <li className="nav-item">
-                                <Link smooth={true} to="/contacts" className="nav-link"><span className="cool-link">Contact</span></Link>
+                                <Link  to="/contacts" className="nav-link"><span className="cool-link">Contact</span></Link>
                             </li>
                             {
                                 !token ? (
                                     <React.Fragment>
                                         <li className="nav-item">
-                                            <Link smooth={true} to="/register" className="nav-link">
+                                            <Link  to="/register" className="nav-link">
                                                 <span className="cool-link">
                                                     Register
                                                     </span>
@@ -54,7 +54,7 @@ export const Navbar = () => {
                                         </li>
 
                                         <li className="nav-item">
-                                            <Link smooth={true} to="/login" className="nav-link">
+                                            <Link  to="/login" className="nav-link">
                                                 <span className="cool-link">
                                                     Login
                                                 </span>

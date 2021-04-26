@@ -23,7 +23,6 @@ export const getListProfile = () => {
     return axios.get('/profile/list-profile')
 }
 export const getIsCreateprofile = (token) => {
-    console.log(token)
     return axios.get('/profile/get-profile', {
         headers: {
             'token': token

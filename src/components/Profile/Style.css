@@ -10,75 +10,43 @@ body{
   h5{
     color: white;
   }
-  
+  .conatinerProfile{
+    padding-top: 10vh;
+    background: #fff;
+  }
+  .conatinerProfile .container{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 1em 0;
+  }
   .col-md-4{
     background: rgb(61, 36, 31);
   }
   
-  .emp-profile{
-    padding: 3%;
-    margin-top: 3%;
-    margin-bottom: 3%;
-    border-radius: 0.5rem;
-    background: rgb(102, 86, 86);
-  
-  
-    background: rgb(61, 36, 31);
-     
-      
-      /*background: rgba(255,255,255,0.04);*/
-      box-shadow: -1px 4px 28px 0px rgba(0,0,0,0.75);
-      border-radius: 20px;
-      box-shadow: 0 15px 25px rgb(218, 40, 40);
+  .profile-img span{
+    margin: 0 0 1rem 0;
   }
   .profile-img{
-    text-align: center;
+    width: 10rem!important;
+    display: flex;
+    flex-direction: column;
   }
   .profile-img img{
-    width: 70%;
+    width: 10rem!important;
     height: 100%;
+    
   }
-  .profile-img .file {
-    position: relative;
-    overflow: hidden;
-    margin-top: -20%;
-    width: 70%;
-    border: none;
-    border-radius: 0;
-    font-size: 15px;
-    background: #212529b8;
-  }
-  .profile-img .file input {
-    position: absolute;
-    opacity: 0;
-    right: 0;
-    top: 0;
-  }
+  .file.btn.btn-lg.btn-primary {
+    width: 100%;
+}
   .profile-head h5{
     color: #333;
   }
   .profile-head h6{
     color: #0062cc;
   }
-  .profile-edit-btn{
-    border: none;
-    border-radius: 1.5rem;
-    width: 70%;
-    padding: 2%;
-    font-weight: 600;
-    color: #6c757d;
-    cursor: pointer;
-  }
-  .proile-rating{
-    font-size: 12px;
-    color: #818182;
-    margin-top: 5%;
-  }
-  .proile-rating span{
-    color: #495057;
-    font-size: 15px;
-    font-weight: 600;
-  }
+
   .profile-head .nav-tabs{
     margin-bottom:5%;
   }
@@ -116,3 +84,130 @@ body{
     font-weight: 600;
     color: #0062cc;
   }
+.conainerItemInforProfile{
+  padding: 1rem;
+  width: 50%;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+}
+.conainerItemInforProfile .containerImage{
+  display: flex;
+  flex-direction: column;
+}
+.conainerItemInforProfile .containerImage img{
+  height: 10rem;
+  width: 10rem;
+  margin-top: 1rem;
+}
+.conainerItemInforProfile .flex{
+  display: flex;
+  margin: 1rem 0;
+}
+.conainerItemInforProfile .flex span:nth-child(1){
+  font-size: 1.2rem;
+  font-family: auto;
+  width: 25%;
+  font-weight: bold;
+}
+.conainerItemInforProfile .flex span:nth-child(2){
+  margin-left: 2rem;
+    font-size: 1.2rem;
+  font-family: auto;
+}
+
+.conatinerProfile .containerTitleMenu{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 10px 0;
+}
+.conatinerProfile .title-wrap-home::after {
+  content: "\203A";
+  padding: .9%;
+  margin-left: 10px;
+}
+.conatinerProfile .title-wrap-home{
+  margin-right: 10px;
+}
+.conatinerProfile  a {
+  color: #000;
+  text-decoration: none;
+}
+.conatinerProfile form{
+  width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.conatinerProfile .containerTitleMenu  a:hover {
+  color: #570f17;
+  text-decoration: none;
+}
+.conainerCreateInforProfile {
+  width: 50%;
+  background: #f3f3f3;
+  padding: 1rem;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+  border-radius: 20px;
+}
+.conainerCreateInforProfile .title{
+  color: #000;
+  margin: 1rem 0;
+}
+.conainerCreateInforProfile .containerRating{
+  margin: 1rem 0;
+}
+.conainerCreateInforProfile .proile-rating{
+  font-size: 1rem!important;
+  color: #000;
+
+}
+.conainerCreateInforProfile .proile-rating span{
+  color: #495057;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.conainerCreateInforProfile span{
+  color: #000;
+}
+.conainerCreateInforProfile .containerUserName{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  
+}
+.conainerCreateInforProfile .containerUserName span:nth-child(1),.conainerCreateInforProfile .flex span:nth-child(1){
+  width: 25%;
+}
+.conainerCreateInforProfile .flex{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin: 1rem 0;
+}
+.conainerCreateInforProfile .flex input{
+  flex: 1;
+  padding: 5px;
+  border: 1px solid #cacaca;
+}
+.conainerCreateInforProfile .flex input:focus,.conainerCreateInforProfile .flex input:active{
+ outline: none;
+}
+.conainerCreateInforProfile .btnSubmit{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+.conainerCreateInforProfile .profile-edit-btn{
+  border: none;
+  border-radius: 0;
+  width: 50%;
+  padding: 2%;
+  font-weight: 600;
+  color: #6c757d;
+  cursor: pointer;
+  background: #570f17;
+  margin: 1.5rem 0;
+  color: #fff!important;
+}

@@ -36,6 +36,7 @@ const ModalGrid = (props) => {
             createReview(props.id, currentValue, txt, token).then((result) => {
                 if (result?.data?.status === "success") {
                     toast.success("Thank you for reviews")
+                    props.setRevies(true)
                     return props.handleClose()
                 }
                 toast.error("Reviews fail")
@@ -50,6 +51,7 @@ const ModalGrid = (props) => {
         <Modal
             show={props.show} onHide={props.handleClose}
             size="lg"
+            className="containerModalReviews"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
@@ -58,7 +60,6 @@ const ModalGrid = (props) => {
             </Modal.Header>
             <Modal.Body>
                 <div style={styles.container}>
-                    <h2>  Review </h2>
                     <div style={styles.stars}>
                         {stars.map((_, index) => {
                             return (
@@ -81,24 +82,23 @@ const ModalGrid = (props) => {
                     <textarea
                         placeholder="What's your experience?"
                         style={styles.textarea}
+                        rows="5"
                         onChange={(e) => setText(e.target.value)}
                         required
                     />
-
-                    <button
-                        style={styles.button}
-                        onClick={() => handlerCreateReviews()}
-                    >
-                        Submit
+                    <div className="containerBtnReviews">
+                        <button
+                            style={styles.button}
+                            onClick={() => handlerCreateReviews()}
+                        >
+                            Submit
                          </button>
+                    </div>
                 </div>
             </Modal.Body>
             <Modal.Footer>
                 <buton variant="secondary" onClick={props.handleClose}>
                     Close
-          </buton>
-                <buton variant="primary" onClick={props.handleClose}>
-                    Save Changes
           </buton>
             </Modal.Footer>
         </Modal>

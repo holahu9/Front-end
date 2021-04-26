@@ -4,44 +4,48 @@ import { toast } from 'react-toastify';
 import { AuthContext } from './../../context/AuthContext';
 import { createProfile } from '../../api/profile'
 import { uploadImage } from '../../api/upload'
-import { getProfile, getIsCreateprofile } from '../../api/profile'
+import { getIsCreateprofile } from '../../api/profile'
+import { Link } from 'react-router-dom'
+import Loading from '../../common/Loading'
 const Profiles = () => {
   const { userData, token } = useContext(AuthContext);
   const [numberPhone, setPhone] = React.useState('')
   const [salonName, setSallonName] = React.useState('')
   const [addrWebsite, setAddrWebsite] = React.useState('')
   const [urlPhoto, setUrlPhoto] = React.useState('https://res.cloudinary.com/dq8rwm2xl/image/upload/v1619358123/image/khr7mhtuttu5kweudkh1.jpg');
-  const [isCreated, setIsCreate] = React.useState(false)
+  const [inforProfle, setInforProfile] = React.useState(null)
+  const [loading, setLoading] = React.useState(true)
   React.useEffect(() => {
     (() => {
       if (token) {
         getIsCreateprofile(token).then((result) => {
-          console.log(result)
           if (result?.data?.status === "success") {
             if (result?.data?.data) {
-              setIsCreate(true)
+              setInforProfile(result?.data?.data)
             }
+            setLoading(false)
           }
         }).catch((e) => {
-          console.log(e.response)
-          setIsCreate(false)
+
+          setInforProfile(null)
         })
       }
     })()
-    return () => setIsCreate(false)
+    return () => setInforProfile(null)
   }, [token])
 
   const handlerCreateProfile = (e) => {
     e.preventDefault();
+    if(numberPhone.length <  5) return toast.error('phone length must be at least 5 characters long');
     try {
       createProfile(userData?.name, numberPhone, urlPhoto, salonName, addrWebsite, token).then((result) => {
-        console.log(result)
-        if (result?.data?.status === 200) toast.success('Create success');
+     
+        if (result?.data?.status === "success") toast.success('Create success');
         setPhone('')
         setSallonName('')
         setAddrWebsite('')
+        window.location.reload()
       }).catch((e) => {
-
         toast.error('Create Fail');
       })
     } catch (error) {
@@ -58,132 +62,112 @@ const Profiles = () => {
   const ShowFormCreateProfile = () => {
     return (
       <form onSubmit={handlerCreateProfile}>
-        <div className="row">
-          <div className="col-md-4">
-            <div className="profile-img">
-              <img src={urlPhoto} alt="avatar" />
-              <div className="file btn btn-lg btn-primary">
-                Change Photo
+        <div className="conainerCreateInforProfile">
+          <h3 className="title">  Welcome Back!  </h3>
+          <h5 className="title"> Hello {userData?.name ? userData?.name : ''}   </h5>
+          <div className="containerRating">
+            <span className="proile-rating">Rating : <span>8/10</span></span>
+          </div>
+          <div className="containerUserName">
+            <span>Name</span>
+            <span>{userData?.name ? userData?.name : ''}</span>
+          </div>
+          <div className="containerPhone flex">
+            <span>Phone:</span>
+            <input
+              type="text"
+              placeholder="Number Phone"
+              onChange={(e) => setPhone(e.target.value)}
+              value={numberPhone}
+              required
+            />
+          </div>
+          <div className="flex">
+            <span>Salon Name</span>
+            <input
+              type="text"
+              placeholder="Salon Name"
+              onChange={(e) => setSallonName(e.target.value)}
+              value={salonName}
+              required
+            />
+          </div>
+          <div className="flex">
+            <span>Website</span>
+            <input
+              type="text"
+              placeholder="Website"
+              onChange={(e) => setAddrWebsite(e.target.value)}
+              value={addrWebsite}
+              required
+            />
+          </div>
+          <div className="profile-img">
+            <span>Photo</span>
+            <img src={urlPhoto} alt="avatar" />
+            <div className="file btn btn-lg btn-primary">
+              Change Photo
               <input type="file" name="file" onChange={onFileChange} required />
-              </div>
             </div>
           </div>
-          <div className="col-md-6">
-            <div className="profile-head">
-              <h5>
-                Hello, {userData?.name ? userData?.name : ''}
-              </h5>
-              <h6>
-                Welcome Back!
-            </h6>
-              <p className="proile-rating">Rating : <span>8/10</span></p>
-              <ul className="nav nav-tabs" id="myTab" role="tablist">
-                <li className="nav-item">
-                  <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Reviews</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="col-md-2">
+          <div className="btnSubmit">
             <input type="submit" className="profile-edit-btn" name="btnAddMore" defaultValue="Edit Profile" />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="tab-content profile-tab" id="myTabContent">
-              <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Name</label>
-                  </div>
-                  <div className="col-md-6">
-                    <p>{userData?.name ? userData?.name : ''}</p>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Phone:</label>
-                  </div>
-                  <div className="col-md-6">
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        placeholder="Number Phone"
-                        onChange={(e) => setPhone(e.target.value)}
-                        value={numberPhone}
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Salon Name</label>
-                  </div>
-                  <div className="col-md-6">
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        placeholder="Salon Name"
-                        onChange={(e) => setSallonName(e.target.value)}
-                        value={salonName}
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <label>Website</label>
-                  </div>
-                  <div className="col-md-6">
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        placeholder="Website"
-                        onChange={(e) => setAddrWebsite(e.target.value)}
-                        value={addrWebsite}
-                        required
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                {/* <div className="row">
-                <div className="col-md-6">
-                  <label>Experience</label>
-                </div>
-                <div className="col-md-6">
-                  <p>Expert</p>
-                </div>
-              </div> */}
-
-
-
-
-              </div>
-            </div>
           </div>
         </div>
       </form>
     )
   }
-  return (
-    <div className="login1">
-      <div className="container emp-profile">
-        {
-          !isCreated ? ShowFormCreateProfile() : null
-        }
-
+  const ShowInforProfile = () => {
+    return (
+      <div className="conainerItemInforProfile">
+        <div className="containerUsername flex">
+          <span>Name :</span>
+          <span>{inforProfle?.name}</span>
+        </div>
+        <div className="containerPhone flex">
+          <span>Phone :</span>
+          <span>{inforProfle?.phone}</span>
+        </div>
+        <div className="containerImage flex">
+          <span>Photo :</span>
+          <img src={inforProfle?.image} alt="avatar" className="img-fluid" />
+        </div>
+        <div className="containerSalonName flex">
+          <span>Salon name :</span>
+          <span>{inforProfle?.salon_name}</span>
+        </div>
+        <div className="containerWebsite flex">
+          <span>Website :</span>
+          <span>{inforProfle?.website}</span>
+        </div>
+        <div className="containerReviews flex">
+          <span>Reviews :</span>
+          <span>{inforProfle?.reviews_number}</span>
+        </div>
       </div>
+    )
+  }
+  return (
+    <React.Fragment>
+      {
+        loading ?
+          <Loading></Loading> : (
+            <div className="conatinerProfile container-fluid">
+              <div className="containerTitleMenu">
+                <Link to="/"><span className="title-wrap-home">Home</span></Link>
+                <span className="card-title ">Profile</span>
+              </div>
+              <div className="container">
+                {
+                  (!inforProfle ? ShowFormCreateProfile() : ShowInforProfile())
+                }
 
+              </div>
+            </div>
+          )
+      }
+    </React.Fragment>
 
-
-    </div>
   )
 }
 

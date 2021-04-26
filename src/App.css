@@ -256,16 +256,18 @@ nav ul li {
      background-color: rgb(236, 150, 45);
      text-align: center;
    } */
-  
+  body{
+    background: white!important;
+  }
    .login1{
     width:100%;
-     /* background: url(./assets/background3.jpg); */
+     /* background: url(./assets/background3.jpg);
      background-size: cover;
      fill-opacity: inherit;
      text-align: center;
      padding: 100px 200px;
-     margin-bottom: 0px;
-     background: white;
+     margin-bottom: 0px; */
+     background: white!important;
    }
 
    .footer .ml-3, .mx-3 {
