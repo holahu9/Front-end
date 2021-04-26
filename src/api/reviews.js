@@ -25,3 +25,25 @@ export const getReviewsOfUser = (profile,token) => {
         }
     })
 }
+export const postDeleteReviews = (id,token) => {
+    return axios.post('/reviews/delete-review', {
+        id
+    }, {
+        headers: {
+            'token': token
+        }
+    })
+}
+export const postUpdateReviews = (id,
+    star,
+    comment,token) => {
+    return axios.post('/reviews/update-review', {
+        id,
+        star,
+        comment
+    }, {
+        headers: {
+            'token': token
+        }
+    })
+}

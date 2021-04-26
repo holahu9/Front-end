@@ -29,3 +29,21 @@ export const getIsCreateprofile = (token) => {
         }
     })
 }
+export const postUpdateProfile = (id,
+    name,
+    phone,
+    image,
+    salon_name,
+    token) => {
+    return axios.post('/profile/update-profile', {
+        id,
+        name,
+        phone,
+        image,
+        salon_name
+    }, {
+        headers: {
+            'token': token
+        }
+    })
+}

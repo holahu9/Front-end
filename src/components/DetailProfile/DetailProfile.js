@@ -7,18 +7,24 @@ import { getReviewsOfUser, getReviews } from '../../api/reviews'
 import ModalGrid from './ModalGrid';
 import Loading from '../../common/Loading'
 import { Link } from 'react-router-dom'
-import { FaStar } from "react-icons/fa";
-import { BsStarHalf ,BsStarFill} from "react-icons/bs";
+import ListReviews from './ListReviews';
+import ModalDelete from './ModalDelete';
+import ModalEditCMT from './ModalEditCMT';
 const DetailProfile = () => {
-  const { userData, token } = useContext(AuthContext);
+  const { token } = useContext(AuthContext);
   const [inforProfile, setInforProfile] = React.useState(null)
   const [isReviews, setRevies] = React.useState(false)
   const [show, setShow] = React.useState(false);
   const [loading, setLoading] = React.useState(true)
   const [listReviews, setlistReviews] = React.useState(null)
   const [isTab, setTab] = React.useState(0)
+  const [showModalDelete, setShowModalDelete] = React.useState(false);
+  const [showModalEdit, setShowModalEdit] = React.useState(false);
+  const [idReviews, setidReviews] = React.useState(null);
+  const [itemReviews, setitemReviews] = React.useState(null);
   const { id } = useParams();
   const history = useHistory();
+
   React.useEffect(() => {
     (() => {
       if (id) {
@@ -41,21 +47,21 @@ const DetailProfile = () => {
         }).catch(() => {
           setInforProfile(null)
         })
-        getReviews(id).then((result) => {
-          if (result?.data?.status === "success") {
-            if(result?.data?.data){
-              setlistReviews()
-            }
-           
-          }
-        }).catch(() => {
-          setlistReviews(null)
-        })
       }
     })()
     return () => setInforProfile(null)
+  }, [token])
+  React.useEffect(() => {
+    getReviews(id).then((result) => {
+      if (result?.data?.status === "success") {
+        if (result?.data?.data) {
+          setlistReviews(result?.data?.data)
+        }
+      }
+    }).catch(() => {
+      setlistReviews(null)
+    })
   }, [])
-
   const handlerReviews = () => {
     if (!token) {
       return history.push("/login");
@@ -65,37 +71,20 @@ const DetailProfile = () => {
   const handleClose = () => {
     setShow(false)
   }
-  const showListRevies = () => {
-    if (listReviews) {
-      return listReviews.map((item) => (
-        <div className="containerReviewss">
-          <span>{item.user.name}</span>
-          <span>{item.comment}</span>
-          <div className="containerReviewsStart">
-            {Array(parseInt(item.star)).fill(0).map((_, index) => {
-              return (
-                <BsStarFill
-                  key={index}
-                  size={24}
-                  style={{
-                    marginRight: 10,
-                    cursor: "pointer",
-                    color: 'rgb(255 185 13)'
-                  }}
-                />
-              )
-            })}
-          </div>
-        </div>
-      ))
-    } else {
-      return (
-        <div className="containerReviewss">
-          <span style={{ textAlign: 'center', margin: '1rem' }}>No Reviews</span>
-        </div>
-      )
-    }
+  const handleCloseDelete = () => {
+    setShowModalDelete(false)
   }
+  const onhandlerEditShow = () => {
+
+    setShowModalEdit(true)
+  }
+  const onHandlerCloseModalEdit = () => {
+    setShowModalEdit(false)
+  }
+  const handlerDelete = () => {
+    setShowModalDelete(true)
+  }
+  const showListRevies = () => <ListReviews {...{ listReviews, handlerDelete, onhandlerEditShow, setidReviews ,setitemReviews}}></ListReviews>
 
   const ShowInforProfile = () => {
     return (
@@ -179,6 +168,8 @@ const DetailProfile = () => {
             </div>
           )
       }
+      <ModalDelete {...{ showModalDelete, handleCloseDelete, idReviews, token }}></ModalDelete>
+      <ModalEditCMT {...{ showModalEdit, onhandlerEditShow, onHandlerCloseModalEdit,itemReviews }}></ModalEditCMT>
     </React.Fragment>
 
   )

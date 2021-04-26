@@ -198,3 +198,14 @@ body{
   display: flex;
   flex-direction: row;
 }
+.conatinerProfile .containerAction .btnUpdate span,
+.conatinerProfile .containerAction .btnDelete span{
+  font-size: 0.8rem;
+  font-weight: normal;
+  font-family: 'Prata';
+  cursor: pointer;
+  margin: 0 10px;
+}
+.textareaUpdateReviews{
+  margin: 1rem 0;
+}

@@ -249,3 +249,18 @@ body{
   padding: 10px 0;
   border-top-right-radius: 20px;
  }
+ .conatinerProfile .containerAction{
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+ }
+ .modal {
+
+  z-index: 999999999!important;
+}
+.containerModalReviews .profile-edit-btn-update{
+
+  padding: 10px!important;
+  width: 20%!important;
+
+}

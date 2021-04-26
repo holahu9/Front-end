@@ -2,10 +2,12 @@ import React, { useContext, useState } from 'react';
 import "./Style.css";
 import { FaStar } from "react-icons/fa";
 import Modal from 'react-bootstrap/Modal'
-import { AuthContext } from './../../context/AuthContext';
-import { createReview } from '../../api/reviews'
+import { AuthContext } from '../../context/AuthContext';
+import { postUpdateReviews } from '../../api/reviews'
 import { toast } from 'react-toastify';
-const ModalGrid = (props) => {
+import Button from 'react-bootstrap/Button'
+const ModalEditCMT = (props) => {
+    const { showModalEdit, itemReviews, onHandlerCloseModalEdit } = props
     const colors = {
         orange: "#FFBA5A",
         grey: "#a9a9a9"
@@ -15,9 +17,7 @@ const ModalGrid = (props) => {
     const [currentValue, setCurrentValue] = useState(1);
     const [hoverValue, setHoverValue] = useState(undefined);
     const [txt, setText] = useState('')
-    const stars = Array(5).fill(0)
-
-    // handle mouse
+    const [numberStar, setNumberStart] = useState(5);
     const handleClick = value => {
         setCurrentValue(value)
     }
@@ -29,50 +29,53 @@ const ModalGrid = (props) => {
     const handleMouseLeave = () => {
         setHoverValue(undefined)
     }
-
-    const handlerCreateReviews = () => {
+    React.useEffect(() => {
+        (() => {
+            if (itemReviews) {
+                console.log(itemReviews)
+                setText(itemReviews?.comment)
+                setNumberStart(itemReviews?.star)
+            }
+        })()
+    }, [itemReviews, showModalEdit])
+    const onHandlerUpadte = () => {
         if (txt === '') return toast.warning("Please complete all information")
         if (token) {
-            createReview(props.id, currentValue, txt, token).then((result) => {
+            postUpdateReviews(itemReviews._id, currentValue, txt, token).then((result) => {
                 if (result?.data?.status === "success") {
-                    toast.success("Thank you for reviews")
-                    props.setRevies(true)
-                    props.handleClose()
+                    toast.success("Update reviews success")
                     window.location.reload()
                     return
                 }
-                toast.error("Reviews fail")
+                toast.error("Update reviews fail")
             }).catch((e) => {
-                toast.error("Reviews fail")
+                toast.error("Update reviews fail")
             })
         }
-
     }
-
     return (
         <Modal
-            show={props.show} onHide={props.handleClose}
-            size="lg"
+            show={showModalEdit} onHide={onHandlerCloseModalEdit}
+            size="md"
             className="containerModalReviews"
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
             <Modal.Header closeButton>
-                <Modal.Title>Reviews</Modal.Title>
+                <Modal.Title>Edit Reviews</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <div style={styles.container}>
                     <div style={styles.stars}>
-                        {stars.map((_, index) => {
+                        {Array(5).fill(0).map((_, index) => {
                             return (
                                 <FaStar
                                     key={index}
                                     size={24}
-
                                     onClick={() => handleClick(index + 1)}
                                     onMouseOver={() => handleMouseOver(index + 1)}
                                     onMouseLeave={handleMouseLeave}
-                                    color={(hoverValue || currentValue) > index ? colors.orange : colors.grey}
+                                    color={(hoverValue || currentValue) > index  ? colors.orange : colors.grey}
                                     style={{
                                         marginRight: 10,
                                         cursor: "pointer"
@@ -81,17 +84,20 @@ const ModalGrid = (props) => {
                             )
                         })}
                     </div>
-                    <textarea
-                        placeholder="What's your experience?"
-                        style={styles.textarea}
-                        rows="5"
-                        onChange={(e) => setText(e.target.value)}
-                        required
-                    />
+                    <div className='textareaUpdateReviews'>
+                        <textarea
+                            placeholder="What's your experience?"
+                            style={styles.textarea}
+                            rows="5"
+                            onChange={(e) => setText(e.target.value)}
+                            required
+                        />
+                    </div>
+
                     <div className="containerBtnReviews">
                         <button
                             style={styles.button}
-                            onClick={() => handlerCreateReviews()}
+                            onClick={() => onHandlerUpadte()}
                         >
                             Submit
                          </button>
@@ -99,7 +105,7 @@ const ModalGrid = (props) => {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <buton variant="secondary" onClick={props.handleClose}>
+                <buton variant="secondary" onClick={onHandlerCloseModalEdit}>
                     Close
           </buton>
             </Modal.Footer>
@@ -107,28 +113,10 @@ const ModalGrid = (props) => {
     )
 }
 
-export default ModalGrid
+export default React.memo(ModalEditCMT)
 
 const styles = {
-    container: {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center"
-    },
-    stars: {
-        display: "flex",
-        flexDirection: "row",
-    },
-    textarea: {
-        border: "1px solid #a9a9a9",
-        borderRadius: 5,
-        padding: 10,
-        margin: "20px 0",
-
-    },
     button: {
-        border: "1px solid #a9a9a9",
-        borderRadius: 5,
-        padding: 10,
+        marginLeft: '1rem'
     }
 };
