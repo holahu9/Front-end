@@ -3,16 +3,19 @@ import "./Style.css";
 import { AuthContext } from '../../context/AuthContext';
 import { useParams, useHistory } from "react-router-dom";
 import { getProfile } from '../../api/profile'
-import { getReviewsOfUser } from '../../api/reviews'
+import { getReviewsOfUser, getReviews } from '../../api/reviews'
 import ModalGrid from './ModalGrid';
 import Loading from '../../common/Loading'
 import { Link } from 'react-router-dom'
+import { FaStar } from "react-icons/fa";
 const DetailProfile = () => {
   const { userData, token } = useContext(AuthContext);
   const [inforProfile, setInforProfile] = React.useState(null)
   const [isReviews, setRevies] = React.useState(false)
   const [show, setShow] = React.useState(false);
   const [loading, setLoading] = React.useState(true)
+  const [listReviews, setlistReviews] = React.useState(null)
+  const [isTab, setTab] = React.useState(0)
   const { id } = useParams();
   const history = useHistory();
   React.useEffect(() => {
@@ -20,8 +23,10 @@ const DetailProfile = () => {
       if (id) {
         if (token) {
           getReviewsOfUser(id, token).then((result) => {
-            if (result?.data?.data) {
-              setRevies(true)
+            if (result?.data?.status === "success") {
+              if (result?.data?.data) {
+                setRevies(true)
+              }
             }
           }).catch(() => {
             setRevies(false)
@@ -35,11 +40,18 @@ const DetailProfile = () => {
         }).catch(() => {
           setInforProfile(null)
         })
-
+        getReviews(id).then((result) => {
+          if (result?.data?.status === "success") {
+            setlistReviews(result?.data?.data)
+          }
+        }).catch(() => {
+          setlistReviews(null)
+        })
       }
     })()
     return () => setInforProfile(null)
   }, [])
+
   const handlerReviews = () => {
     if (!token) {
       return history.push("/login");
@@ -49,10 +61,34 @@ const DetailProfile = () => {
   const handleClose = () => {
     setShow(false)
   }
-
+  const showListRevies = () => {
+    if (listReviews) {
+      return listReviews.map((item) => (
+        <div className="containerReviewss">
+          <span>{item.user.name}</span>
+          <span>{item.comment}</span>
+          <div className="containerReviewsStart">
+            {Array(parseInt(item.star)).fill(0).map((_, index) => {
+              return (
+                <FaStar
+                  key={index}
+                  size={24}
+                  style={{
+                    marginRight: 10,
+                    cursor: "pointer",
+                    color: 'rgb(255 185 13)'
+                  }}
+                />
+              )
+            })}
+          </div>
+        </div>
+      ))
+    }
+  }
   const ShowInforProfile = () => {
     return (
-      <div className="conainerItemInforProfile">
+      <div className="containerInforProfile">
         <div className="containerUsername flex">
           <span>Name :</span>
           <span>{inforProfile?.name}</span>
@@ -77,14 +113,19 @@ const DetailProfile = () => {
           <span>Reviews :</span>
           <span>{inforProfile?.reviews_number}</span>
         </div>
+        <div className=" flex" style={{ border: 'inherit' }}>
+          <span>Average Star :</span>
+          <span>{inforProfile?.star_rate}</span>
+        </div>
         {
           !isReviews ? (
-            <div className="containerBtnReviews flex">
+            <div className="containerBtnReviews flex" style={{
+              border: 'inherit'
+            }}>
               <button onClick={handlerReviews}>Reviews</button>
             </div>
           ) : null
         }
-
       </div>
     )
   }
@@ -100,12 +141,30 @@ const DetailProfile = () => {
                 <span className="card-title ">Profile {inforProfile?.name ? inforProfile?.name : ''}</span>
               </div>
               <div className="container">
-                {
-                  inforProfile ? ShowInforProfile() : null
-                }
+                <div className="conainerItemInforProfile">
+                  <div className="containerTab">
+                    <div onClick={() => setTab(0)} style={{
+                      fontWeight: isTab === 0 ? 'bold' : 'normal',
+                      background: isTab === 0 ? '#570f17' : '#FFF',
+                    }} className="containerTabProfile"><span style={{ color: isTab === 0 ? '#fff' : '#570f17' }}>Profile</span></div>
+                    <div onClick={() => setTab(1)} style={{
+                      fontWeight: isTab === 1 ? 'bold' : 'normal',
+                      background: isTab === 1 ? '#570f17' : '#FFF',
+                    }} className="containerTabReviews"><span style={{ color: isTab === 1 ? '#fff' : '#570f17' }}>Seen Reviews</span></div>
+                  </div>
+                  {
+                    inforProfile ? (
+                      <React.Fragment>
+                        {isTab === 0 && ShowInforProfile()}
+                        {isTab === 1 && showListRevies()}
+                      </React.Fragment>
+                    ) : null
+                  }
+
+                </div>
 
               </div>
-              <ModalGrid {...{ show, handleClose, id,setRevies }}></ModalGrid>
+              <ModalGrid {...{ show, handleClose, id, setRevies }}></ModalGrid>
             </div>
           )
       }

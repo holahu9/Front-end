@@ -146,3 +146,55 @@ body{
   cursor: pointer;
 
 }
+.conatinerProfile .containerTab{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #d0d0d0;
+}
+.conatinerProfile .containerTab div span{
+  padding: 0 10px;
+  text-transform: uppercase;
+  color: #570f17;
+  padding: 0 1rem;
+  font-family: auto;
+  font-size: .9rem!important;
+ 
+ }
+ .conatinerProfile .containerTab .containerTabProfile{
+  width: 50%;
+  justify-content: center;
+  display: flex;
+  padding: 10px 0;
+  border-top-left-radius: 20px;
+  cursor: pointer;
+  border-right: 1px solid #d0d0d0;
+  border-top: 1px solid #d0d0d0;
+ }
+ .conatinerProfile .containerTab .containerTabReviews{
+  width: 50%;
+  justify-content: center;
+  border-top: 1px solid #d0d0d0;
+  display: flex;
+  cursor: pointer;
+  padding: 10px 0;
+  border-top-right-radius: 20px;
+ }
+ .conatinerProfile .containerInforProfile{
+  /* padding: 1rem; */
+ }
+ .conatinerProfile .containerReviewss {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #f0f2f5;
+  margin: 10px;
+  border-radius: 20px;
+}
+.conatinerProfile .containerReviewss span:nth-child(2){
+  margin: 5px 0;
+}
+.conatinerProfile .containerReviewss .containerReviewsStart{
+  display: flex;
+  flex-direction: row;
+}

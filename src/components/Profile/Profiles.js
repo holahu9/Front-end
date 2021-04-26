@@ -36,10 +36,10 @@ const Profiles = () => {
 
   const handlerCreateProfile = (e) => {
     e.preventDefault();
-    if(numberPhone.length <  5) return toast.error('phone length must be at least 5 characters long');
+    if (numberPhone.length < 5) return toast.error('phone length must be at least 5 characters long');
     try {
       createProfile(userData?.name, numberPhone, urlPhoto, salonName, addrWebsite, token).then((result) => {
-     
+
         if (result?.data?.status === "success") toast.success('Create success');
         setPhone('')
         setSallonName('')
@@ -120,6 +120,9 @@ const Profiles = () => {
   const ShowInforProfile = () => {
     return (
       <div className="conainerItemInforProfile">
+        <div className="containerTabs">
+          <div  className="containerTabProfiles"><span>Profile</span></div>
+        </div>
         <div className="containerUsername flex">
           <span>Name :</span>
           <span>{inforProfle?.name}</span>
@@ -140,7 +143,14 @@ const Profiles = () => {
           <span>Website :</span>
           <span>{inforProfle?.website}</span>
         </div>
-        <div className="containerReviews flex">
+        <div className=" flex" >
+          <span>Average Star :</span>
+          <span>{inforProfle?.star_rate}</span>
+        </div>
+        <div className="containerReviews flex" style={{
+          borderBottomLeftRadius: '20px',
+          borderBottomRightRadius: '20px'
+        }}>
           <span>Reviews :</span>
           <span>{inforProfle?.reviews_number}</span>
         </div>
