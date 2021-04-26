@@ -8,6 +8,7 @@ import ModalGrid from './ModalGrid';
 import Loading from '../../common/Loading'
 import { Link } from 'react-router-dom'
 import { FaStar } from "react-icons/fa";
+import { BsStarHalf ,BsStarFill} from "react-icons/bs";
 const DetailProfile = () => {
   const { userData, token } = useContext(AuthContext);
   const [inforProfile, setInforProfile] = React.useState(null)
@@ -42,7 +43,10 @@ const DetailProfile = () => {
         })
         getReviews(id).then((result) => {
           if (result?.data?.status === "success") {
-            setlistReviews(result?.data?.data)
+            if(result?.data?.data){
+              setlistReviews()
+            }
+           
           }
         }).catch(() => {
           setlistReviews(null)
@@ -70,7 +74,7 @@ const DetailProfile = () => {
           <div className="containerReviewsStart">
             {Array(parseInt(item.star)).fill(0).map((_, index) => {
               return (
-                <FaStar
+                <BsStarFill
                   key={index}
                   size={24}
                   style={{
@@ -84,8 +88,15 @@ const DetailProfile = () => {
           </div>
         </div>
       ))
+    } else {
+      return (
+        <div className="containerReviewss">
+          <span style={{ textAlign: 'center', margin: '1rem' }}>No Reviews</span>
+        </div>
+      )
     }
   }
+
   const ShowInforProfile = () => {
     return (
       <div className="containerInforProfile">

@@ -24,38 +24,40 @@ const Feature = () => {
     }, [])
 
     return (
-        <section className="containerFeatures">
-            <div className="container-fluid containerColor">
-                <div className="row">
-                    <div className="card-body mt-5">
-                        <div className="containerTitleMenu">
-                            <Link to="/"><span className="title-wrap-home">Home</span></Link>
-                            <span className="card-title ">Features</span>
-                        </div>
-         
-                        {
-                            loading ? <Loading></Loading>: (
-                                <div className="row ">
-                                    { listProfile.map(item => (
-                                        <Card
-                                            id={item.id}
-                                            name={item.name}
-                                            image={item.image}
-                                            link={item.link}
-                                            salon_name={item.salon_name}
-                                            _id={item._id}
-                                            phone={item.phone}
-                                            star_rate={item.star_rate}
-                                            key={item._id}
-                                        />
-                                    ))}
+        <React.Fragment>
+            {
+                loading ? <Loading></Loading> : (
+                    <section className="containerFeatures">
+                        <div className="container-fluid containerColor">
+                            <div className="row">
+                                <div className="card-body mt-5">
+                                    <div className="containerTitleMenu">
+                                        <Link to="/"><span className="title-wrap-home">Home</span></Link>
+                                        <span className="card-title ">Features</span>
+                                    </div>
+                                    <div className="row ">
+                                        {listProfile.map(item => (
+                                            <Card
+                                                id={item.id}
+                                                name={item.name}
+                                                image={item.image}
+                                                link={item.link}
+                                                salon_name={item.salon_name}
+                                                _id={item._id}
+                                                phone={item.phone}
+                                                star_rate={item.star_rate}
+                                                key={item._id}
+                                            />
+                                        ))}
+                                    </div>
                                 </div>
-                            )
-                        }
-                    </div>
-                </div>
-            </div>
-        </section>
+                            </div>
+                        </div>
+                    </section>
+                )
+            }
+        </React.Fragment>
+
     );
 }
 

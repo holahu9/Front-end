@@ -1,13 +1,15 @@
 .containerFeatures{
-    background: #fff;
+    background: #f0f2f5;
 }
 .containerFeatures .card-title{
     margin: 10px 0;
+    font-family: 'Prata';
 }
 .containerFeatures .containerTitleMenu{
     display: flex;
     flex-direction: row;
     align-items: center;
+    font-family: 'Prata';
 }
 .containerFeatures .title-wrap-home::after {
     content: "\203A";
@@ -47,6 +49,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    font-family: 'Prata';
 }
 .containerFeatures .card-footer.text-center{
     cursor: pointer;
@@ -54,7 +57,16 @@
     width: auto;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+}
+.containerFeatures .containerStar{
+    margin: 0 0 1rem 0;
 }
 .containerFeatures .containerItemFeatures{
     margin: 0 0 1rem 0;
+}
+.containerFeatures .card {
+    border: initial!important;
+    border-radius: 10px;
+    background: #fff;
 }
