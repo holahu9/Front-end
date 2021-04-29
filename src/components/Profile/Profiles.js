@@ -128,7 +128,7 @@ const Profiles = () => {
                           <div onClick={() => setTab(1)} style={{
                             fontWeight: isTab === 1 ? 'bold' : 'normal',
                             background: isTab === 1 ? '#570f17' : '#FFF',
-                          }} className="containerTabReviewss"><span style={{ color: isTab === 1 ? '#fff' : '#570f17' }}>Seen Reviews</span></div>
+                          }} className="containerTabReviewss"><span style={{ color: isTab === 1 ? '#fff' : '#570f17' }}>Reviews</span></div>
                         </div>
                         {isTab === 0 && ShowInforProfile()}
                         {isTab === 1 && showListRevies()}

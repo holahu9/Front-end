@@ -16,7 +16,7 @@ const InforProfile = (props) => {
                 <img src={props.inforProfle?.image} alt="avatar" className="img-fluid" />
             </div>
             <div className="containerSalonName flex">
-                <span>Salon name :</span>
+                <span>Salon Name :</span>
                 <span>{props.inforProfle?.salon_name}</span>
             </div>
             <div className="containerWebsite flex">
