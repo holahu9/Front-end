@@ -1,1 +1,1 @@
-export const BASE_URL ='http://13.90.82.69:5000/' ;
+export const BASE_URL ='https://nail-back-end.herokuapp.com/' ;
