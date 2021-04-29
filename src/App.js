@@ -11,6 +11,7 @@ import Profile from "./components/Profile/Profiles";
 import Feature from "./components/Features/Feature";
 import Reviews from "./components/Reviews/Reviews";
 import AuthContextProvider from "./context/AuthContext";
+import About from "./components/About/About";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import DetailProfile from "./components/DetailProfile/DetailProfile";
@@ -26,6 +27,7 @@ function App() {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/feature" component={Feature} />
         <Route exact path="/reviews" component={Reviews} />
+        <Route exact path="/about" component={About} />
         <Route exact path="/Detail-Profile/:id" component={DetailProfile} />
         <Footer />
         <ToastContainer style={{zIndex:9999999999999}}/>

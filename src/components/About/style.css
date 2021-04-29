@@ -1,0 +1,52 @@
+.about{
+    
+    margin:130px auto 50px auto;
+
+    
+    width: 50%;
+    justify-content: center;
+    border-top: 1px solid #d0d0d0;
+    display: flex;
+    cursor: pointer;
+    padding: 10px 0;
+    border-top-right-radius: 20px;
+    
+}
+
+.row{
+    justify-content: center;
+}
+
+.header_ul{
+    list-style: none;
+    display:flex;
+    
+    align-items: center;
+    height: 15vh;
+    width:100%;
+    
+  }
+  
+  .header_ul li{
+    width:35px;
+    height:35px;
+    border: 1px solid #de69e2;
+    text-align: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 10px;
+  }
+  
+  .header_button a{
+    border: 1px solid #de69e2;
+    color:white;
+    border-radius: 20px;
+    margin-right: 10px
+  }
+
+  .pic{
+    width: 300px;
+    height:300px;
+    border-radius: 150px;
+   
+  }

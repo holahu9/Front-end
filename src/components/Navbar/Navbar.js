@@ -36,12 +36,10 @@ export const Navbar = () => {
                             </li>
 
                             <li className="nav-item">
-                                <Link  to="/portfolio" className="nav-link"><span className="cool-link">About Us</span></Link>
+                                <Link  to="/about" className="nav-link"><span className="cool-link">About Us</span></Link>
                             </li>
 
-                            <li className="nav-item">
-                                <Link  to="/contacts" className="nav-link"><span className="cool-link">Contact</span></Link>
-                            </li>
+                           
                             {
                                 !token ? (
                                     <React.Fragment>
